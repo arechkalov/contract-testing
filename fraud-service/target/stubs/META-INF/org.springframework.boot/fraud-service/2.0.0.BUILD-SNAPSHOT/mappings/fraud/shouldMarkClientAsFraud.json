@@ -1,0 +1,26 @@
+{
+  "id" : "c9e0bc4a-0c7c-46a3-8b0a-6c50027ba4d1",
+  "request" : {
+    "url" : "/fraudcheck",
+    "method" : "PUT",
+    "headers" : {
+      "Content-Type" : {
+        "matches" : "application/json.*"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['client.id'] =~ /[0-9]{10}/)]"
+    }, {
+      "matchesJsonPath" : "$[?(@.['loanAmount'] == 99999)]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"fraudCheckStatus\":\"FRAUD\",\"rejection.reason\":\"Amount too high\"}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    },
+    "transformers" : [ "response-template" ]
+  },
+  "uuid" : "c9e0bc4a-0c7c-46a3-8b0a-6c50027ba4d1"
+}

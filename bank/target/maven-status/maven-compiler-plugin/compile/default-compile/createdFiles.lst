@@ -1,0 +1,10 @@
+com\endava\bank\dto\Response.class
+com\endava\bank\dto\fraud\FraudCheckStatus.class
+com\endava\bank\dto\fraud\FraudServiceRequest.class
+com\endava\bank\dto\BankApply.class
+com\endava\bank\dto\fraud\FraudServiceResponse.class
+com\endava\bank\service\ApplyService.class
+com\endava\bank\Application.class
+com\endava\bank\dto\ApplyResult.class
+com\endava\bank\dto\Participant.class
+com\endava\bank\dto\ApplyStatus.class
