@@ -32,3 +32,4 @@ _ReSharper*/
 #Nuget packages folder
 packages/
 /bank/target/legacy-app-1.0-SNAPSHOT.jar
+*/target/*

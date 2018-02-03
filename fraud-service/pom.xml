@@ -11,6 +11,7 @@
         <relativePath />
     </parent>
 
+    <groupId>com.endava</groupId>
     <artifactId>fraud-service</artifactId>
     <name>Fraud Service Server</name>
 
