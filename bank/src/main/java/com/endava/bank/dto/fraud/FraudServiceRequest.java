@@ -1,31 +1,31 @@
 package com.endava.bank.dto.fraud;
 
-import com.endava.bank.dto.BankApply;
+import com.endava.bank.dto.Loan;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 
 public class FraudServiceRequest {
 
-	@JsonProperty("client.id")
-	private String clientId;
+	@JsonProperty("participant.id")
+	private String participantId;
 
 	private BigDecimal loanAmount;
 
 	public FraudServiceRequest() {
 	}
 
-	public FraudServiceRequest(BankApply loanApplication) {
-		this.clientId = loanApplication.getParticipant().getName();
+	public FraudServiceRequest(Loan loanApplication) {
+		this.participantId = loanApplication.getParticipant().getId();
 		this.loanAmount = loanApplication.getAmount();
 	}
 
-	public String getClientId() {
-		return clientId;
+	public String getParticipantId() {
+		return participantId;
 	}
 
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
+	public void setParticipantId(String participantId) {
+		this.participantId = participantId;
 	}
 
 	public BigDecimal getLoanAmount() {

@@ -2,20 +2,20 @@ package com.endava.bank.dto;
 
 public class Participant {
 
-	private String name;
+	private String id;
 	
 	public Participant() {
 	}
 
 	public Participant(String name) {
-		this.name = name;
+		this.id = name;
 	}
 
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
 }

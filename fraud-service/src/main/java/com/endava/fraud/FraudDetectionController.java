@@ -18,7 +18,6 @@ public class FraudDetectionController {
     private static final String AMOUNT_TOO_HIGH = "Amount too high";
     private static final BigDecimal MAX_AMOUNT = new BigDecimal("5000");
 
-    // tag::server_api[]
     @RequestMapping(value = "/fraudcheck", method = PUT)
     public FraudCheckResult fraudCheck(@RequestBody FraudCheck fraudCheck) {
         if (amountGreaterThanThreshold(fraudCheck)) {
