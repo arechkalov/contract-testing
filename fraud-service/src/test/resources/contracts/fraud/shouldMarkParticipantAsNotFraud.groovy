@@ -9,7 +9,7 @@ org.springframework.cloud.contract.spec.Contract.make {
 					url '/fraudcheck'
 					body("""
 						{
-						"client.id":"${value(consumer(regex('[0-9]{10}')), producer('1234567890'))}",
+						"participant.id":"${value(consumer(regex('[0-9]{10}')), producer('1234567890'))}",
 						"loanAmount":123.123
 						}
 					"""

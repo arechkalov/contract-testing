@@ -8,7 +8,7 @@ org.springframework.cloud.contract.spec.Contract.make {
 		method 'PUT' // (2)
 		url '/fraudcheck' // (3)
 		body([ // (4)
-			   "client.id": $(regex('[0-9]{10}')),
+			   "participant.id": $(regex('[0-9]{10}')),
 			   loanAmount: 99999
 		])
 		headers { // (5)
