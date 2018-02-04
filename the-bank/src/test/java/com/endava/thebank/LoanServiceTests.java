@@ -1,10 +1,10 @@
-package com.endava.bank;
+package com.endava.thebank;
 
-import com.endava.bank.dto.LoanResult;
-import com.endava.bank.dto.LoanStatus;
-import com.endava.bank.dto.Loan;
-import com.endava.bank.dto.Participant;
-import com.endava.bank.service.LoanService;
+import com.endava.thebank.dto.LoanResult;
+import com.endava.thebank.dto.LoanStatus;
+import com.endava.thebank.dto.Loan;
+import com.endava.thebank.dto.Participant;
+import com.endava.thebank.service.LoanService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +31,13 @@ public class LoanServiceTests {
     @Test
     public void shouldBeRejectedDueToAbnormalLoanAmount() {
         // given:
-        Loan application = new Loan(new Participant("1111111111"),
+        Loan application = new Loan(new Participant("2222222222"),
                 99999);
         // when:
-        LoanResult loanResult = service.apply(application);
+        LoanResult loanApplication = service.apply(application);
         // then:
-        assertThat(loanResult.getLoanStatus())
+        assertThat(loanApplication.getLoanStatus())
                 .isEqualTo(LoanStatus.REJECTED);
-        assertThat(loanResult.getRejectionReason()).isEqualTo("Amount too high");
     }
     // end::client_tdd[]
 }

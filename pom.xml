@@ -24,8 +24,9 @@
     </properties>
 
     <modules>
-        <module>bank</module>
         <module>fraud-service</module>
+        <module>bank</module>
+        <module>the-bank</module>
     </modules>
 
     <build>

@@ -74,7 +74,8 @@
                 <version>${spring-cloud-contract.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <packageWithBaseClasses>com.endava.fraud</packageWithBaseClasses>
+                   <baseClassForTests>com.endava.fraud.thebank.ThebankBase</baseClassForTests>
+                   <baseClassForTests>com.endava.fraud.bank.BankBase</baseClassForTests>
                 </configuration>
             </plugin>
             <!-- end::contract_maven_plugin[] -->
