@@ -3,6 +3,7 @@ package com.endava.fraud;
 import com.endava.fraud.model.FraudCheck;
 import com.endava.fraud.model.FraudCheckResult;
 import com.endava.fraud.model.FraudCheckStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,16 +15,18 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 @RestController
 public class FraudDetectionController {
 
-    private static final String NO_REASON = null;
-    private static final String AMOUNT_TOO_HIGH = "Amount too high";
-    private static final BigDecimal MAX_AMOUNT = new BigDecimal("5000");
+    public static final BigDecimal MAX_AMOUNT = new BigDecimal("50000");
 
     @RequestMapping(value = "/fraudcheck", method = PUT)
-    public FraudCheckResult fraudCheck(@RequestBody FraudCheck fraudCheck) {
-        if (amountGreaterThanThreshold(fraudCheck)) {
-            return new FraudCheckResult(FraudCheckStatus.FRAUD, AMOUNT_TOO_HIGH);
+    public ResponseEntity<FraudCheckResult> fraudCheck(@RequestBody FraudCheck fraudCheck) {
+        if(fraudCheck.getParticipantId() == null) {
+            return ResponseEntity.badRequest().build();
         }
-        return new FraudCheckResult(FraudCheckStatus.OK, NO_REASON);
+
+        if (amountGreaterThanThreshold(fraudCheck)) {
+            return ResponseEntity.ok(new FraudCheckResult(FraudCheckStatus.FRAUD, "Amount too high"));
+        }
+        return ResponseEntity.ok(new FraudCheckResult(FraudCheckStatus.OK, null));
     }
 
     private boolean amountGreaterThanThreshold(FraudCheck fraudCheck) {
