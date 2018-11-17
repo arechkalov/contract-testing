@@ -1,4 +1,5 @@
 package com.endava.fraud.universalbank.adoc;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +19,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 import java.util.regex.Pattern;
 
+@Ignore
 @RunWith(SpringRunner.class)
 public class GenerateAdocsFromContractsTests {
 

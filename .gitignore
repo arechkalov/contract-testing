@@ -33,3 +33,7 @@ _ReSharper*/
 packages/
 /bank/target/legacy-app-1.0-SNAPSHOT.jar
 */target/*
+/external-contracts/.mvn/wrapper/maven-wrapper.jar
+/external-contracts/.mvn/wrapper/maven-wrapper.properties
+/external-contracts/mvnw
+/external-contracts/mvnw.cmd

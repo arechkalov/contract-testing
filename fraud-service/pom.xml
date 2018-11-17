@@ -95,7 +95,7 @@
                             <baseClassFQN>com.endava.fraud.universalbank.rest.UniversalBankRestBase</baseClassFQN>
                         </baseClassMapping>
                         <baseClassMapping>
-                            <contractPackageRegex>.*.messaging.*</contractPackageRegex>
+                            <contractPackageRegex>.*messaging.*</contractPackageRegex>
                             <baseClassFQN>com.endava.fraud.universalbank.messaging.UniversalBankMessagingBase</baseClassFQN>
                         </baseClassMapping>
                         <baseClassMapping>
@@ -103,21 +103,16 @@
                             <baseClassFQN>com.endava.fraud.bcr.BcrBase</baseClassFQN>
                         </baseClassMapping>
                     </baseClassMappings>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>build</directory>
-                        </fileset>
-                        <fileset>
-                            <directory>target</directory>
-                        </fileset>
-                    </filesets>
+
+                    <contractDependency>
+                        <groupId>com.endava</groupId>
+                        <artifactId>external-contracts</artifactId>
+                        <version>0.0.1-SNAPSHOT</version>
+                    </contractDependency>
+
+                    <!-- The JAR with contracts should be taken from Maven local -->
+                    <contractsMode>LOCAL</contractsMode>
+                    <basePackageForTests>demo</basePackageForTests>
                 </configuration>
             </plugin>
         </plugins>
