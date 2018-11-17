@@ -1,5 +1,6 @@
 package contracts.bcr
 
+import com.endava.bank.ConsumerUtils
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
@@ -11,7 +12,7 @@ Contract.make {
         url '/fraudcheck' // (3)
         body([ // (4)
                "participant.id": $(value(consumer(regex('[0-9]{10}')), producer('2222220000'))),
-               loanAmount      : 1000000000.01
+               loanAmount      : $(ConsumerUtils.loanAmountIsBiggerThanLimit())
         ])
         headers { // (5)
             contentType('application/json')

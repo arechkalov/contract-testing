@@ -1,5 +1,6 @@
 package com.endava.fraud.web;
 
+import com.endava.bank.constants.BankConstants;
 import com.endava.fraud.messages.NotificationService;
 import com.endava.fraud.model.FraudCheck;
 import com.endava.fraud.model.FraudCheckResult;
@@ -20,7 +21,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 @Slf4j
 public class FraudDetectionController {
 
-    public static final BigDecimal MAX_AMOUNT = new BigDecimal("50000");
     public static final String FRAUD_CODE = "0000";
     private final NotificationService fraudCheckingService;
 
@@ -38,7 +38,7 @@ public class FraudDetectionController {
     }
 
     private boolean amountGreaterThanThreshold(FraudCheck fraudCheck) {
-        return MAX_AMOUNT.compareTo(fraudCheck.getLoanAmount()) < 0;
+        return BankConstants.MAX_AMOUNT.compareTo(fraudCheck.getLoanAmount()) < 0;
     }
 
 }

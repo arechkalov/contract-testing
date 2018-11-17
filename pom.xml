@@ -20,7 +20,8 @@
     </parent>
 
     <properties>
-        <spring-cloud-contract.version>2.0.0.BUILD-SNAPSHOT</spring-cloud-contract.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <modules>
@@ -28,6 +29,7 @@
         <module>bcr</module>
         <module>universalbank</module>
         <module>stubrunner</module>
+        <module>bank-common</module>
     </modules>
     <dependencies>
         <dependency>
@@ -36,7 +38,6 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-    <!-- end::contract_bom[] -->
     <build>
         <plugins>
             <plugin>
