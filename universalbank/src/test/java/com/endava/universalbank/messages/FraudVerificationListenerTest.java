@@ -1,6 +1,5 @@
 package com.endava.universalbank.messages;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = NONE,
-    properties = "spring.cloud.stream.bindings.input.destination=validation")
+    properties = "spring.cloud.stream.bindings.input.destination=notification")
 @AutoConfigureStubRunner(ids = {"com.endava:fraud-service:+:stubs:6565"},
     stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 public class FraudVerificationListenerTest {
@@ -30,18 +29,9 @@ public class FraudVerificationListenerTest {
     public void shouldIncreaseFraudCounterWhenFraudTookPlace() {
         int initialCount = listener.fraudCounter.get();
 
-        stubFinder.trigger("rejected_message");
+        stubFinder.trigger("notification_fraud_message");
 
         then(listener.fraudCounter.get()).isGreaterThan(initialCount);
 
-    }
-
-    @Test
-    public void shouldIncreaseNotFraudCounterWhenNormalPayTookPlace() {
-        int initialCount = listener.notFraudCounter.get();
-
-        stubFinder.trigger("accepted_message");
-
-        then(listener.notFraudCounter.get()).isGreaterThan(initialCount);
     }
 }

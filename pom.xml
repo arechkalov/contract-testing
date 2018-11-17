@@ -27,6 +27,7 @@
         <module>fraud-service</module>
         <module>bcr</module>
         <module>universalbank</module>
+        <module>stubrunner</module>
     </modules>
     <dependencies>
         <dependency>

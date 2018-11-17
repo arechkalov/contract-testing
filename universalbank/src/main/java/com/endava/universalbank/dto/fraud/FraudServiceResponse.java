@@ -12,6 +12,6 @@ public class FraudServiceResponse {
 
 	private FraudCheckStatus fraudCheckStatus;
 
-	@JsonProperty("rejection.reason")
+	@JsonProperty(value = "rejection.reason", required = true)
 	private String rejectionReason;
 }

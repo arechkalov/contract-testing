@@ -7,9 +7,9 @@ import org.springframework.cloud.stream.messaging.Sink;
 
 @SpringBootApplication
 @EnableBinding(Sink.class)
-public class Application {
+public class UniversalBankApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(UniversalBankApplication.class, args);
 	}
 }

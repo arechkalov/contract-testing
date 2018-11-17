@@ -10,7 +10,7 @@ Contract.make {
         method 'PUT'
         url '/fraudcheck'
         body([
-                "participant.id": $(value(consumer(regex('[0-9]{10}')), producer('1234567890'))),
+                "participant.id": $(value(consumer(regex('[0-9]{10}')), producer('2222220000'))),
                 "loanAmount"    : 200.11
         ])
         headers {

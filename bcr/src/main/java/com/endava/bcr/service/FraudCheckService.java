@@ -9,9 +9,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@Service
+@RestController
 public class FraudCheckService {
 
     private final RestTemplate restTemplate;
@@ -24,6 +26,7 @@ public class FraudCheckService {
             .build();
     }
 
+    @PutMapping("/fraudcheck")
     public ResponseEntity<FraudServiceResponse> check(FraudServiceRequest request) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);

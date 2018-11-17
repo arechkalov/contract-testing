@@ -36,7 +36,7 @@ public class ContractsTest {
 
     @Test
     public void shouldReturnFraudResponse() {
-        Loan loan = new Loan(new Participant("1234567890"), ONE_MILLIARD);
+        Loan loan = new Loan(new Participant("1111110000"), ONE_MILLIARD);
         FraudServiceRequest request = new FraudServiceRequest(loan);
 
         ResponseEntity<FraudServiceResponse> response = fraudService.check(request);
@@ -49,7 +49,7 @@ public class ContractsTest {
 
     @Test
     public void shouldReturnNonFraudResponse() {
-        Loan loan = new Loan(new Participant("2222222222"), BigDecimal.valueOf(200.11));
+        Loan loan = new Loan(new Participant("1111110000"), BigDecimal.valueOf(200.11));
         FraudServiceRequest request = new FraudServiceRequest(loan);
 
         ResponseEntity<FraudServiceResponse> response = fraudService.check(request);

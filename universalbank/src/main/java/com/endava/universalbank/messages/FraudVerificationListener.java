@@ -1,8 +1,8 @@
 package com.endava.universalbank.messages;
 
-import com.endava.universalbank.dto.fraud.Verification;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.endava.universalbank.dto.Participant;
+import com.endava.universalbank.dto.fraud.Notification;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Component;
@@ -10,22 +10,17 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
+@Slf4j
 public class FraudVerificationListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(FraudVerificationListener.class);
-
     AtomicInteger fraudCounter = new AtomicInteger();
-    AtomicInteger notFraudCounter = new AtomicInteger();
 
     @StreamListener(Sink.INPUT)
-    public void listen(Verification verification) {
-        logger.info("Received fraud status");
-        if (verification.isFraud) {
+    public void listen(Notification notification) {
+        if (notification.getCode().equals("0000")) {
+            log.info("Received fraud at: {} from participant: {}", notification.getDate(), notification.getParticipantId());
             fraudCounter.incrementAndGet();
-            logger.info("Participant: {} is fraud", verification.participantId);
-        } else {
-            notFraudCounter.incrementAndGet();
-            logger.info("Participant: {} is not a fraud", verification.participantId);
+            //update something in database
         }
     }
 }
