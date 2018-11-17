@@ -95,7 +95,7 @@
                             <baseClassFQN>com.endava.fraud.universalbank.rest.UniversalBankRestBase</baseClassFQN>
                         </baseClassMapping>
                         <baseClassMapping>
-                            <contractPackageRegex>.*.messaging.*</contractPackageRegex>
+                            <contractPackageRegex>.*messaging.*</contractPackageRegex>
                             <baseClassFQN>com.endava.fraud.universalbank.messaging.UniversalBankMessagingBase</baseClassFQN>
                         </baseClassMapping>
                         <baseClassMapping>
