@@ -4,11 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.endava</groupId>
-	<artifactId>external-contracts</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>fraud-service</artifactId>
+	<version>2.0.0.BUILD-SNAPSHOT</version>
 
-	<name>Contracts</name>
-	<description>Contains all the contracts. JAR used by the producers to generate tests and stubs</description>
+	<name>fraud-service stubs</name>
+
+	<description>Pom used to install Stubs for consumer side </description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -19,27 +20,15 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring-cloud.version>Finchley.BUILD-SNAPSHOT</spring-cloud.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+        <spring-cloud-contract.version>2.0.1.RELEASE</spring-cloud-contract.version>
+		<!-- We don't want to run tests -->
+		<skipTests>true</skipTests>
+		<!-- We don't want to add build folders to the generated jar -->
+		<excludeBuildFolders>true</excludeBuildFolders>
 	</properties>
-
-	<!-- TO GENERATE THE DOCUMENTATION -->
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
-		</dependency>
-	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -53,47 +42,24 @@
 		</dependencies>
 	</dependencyManagement>
 
-
 	<build>
 		<plugins>
-			<!-- remove::start[] -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>contracts</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<attach>true</attach>
-							<descriptors>
-								${project.basedir}/src/assembly/contracts.xml
-							</descriptors>
-							<!-- If you want an explicit classifier remove the following line -->
-							<appendAssemblyId>false</appendAssemblyId>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+				<version>${spring-cloud-contract.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<!-- By default it would search under src/test/resources/ -->
+					<contractsDirectory>${project.basedir}</contractsDirectory>
+					<!-- Excludes target folders from being generated -->
+					<excludeBuildFolders>true</excludeBuildFolders>
+				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<executions>
-					<execution>
-						<id>default-jar</id>
-						<phase>none</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- remove::end[] -->
 		</plugins>
 	</build>
+
+	<!-- end::config[] -->
 	<profiles>
 		<profile>
 			<id>spring</id>
