@@ -103,6 +103,7 @@
                             <baseClassFQN>com.endava.fraud.bcr.BcrBase</baseClassFQN>
                         </baseClassMapping>
                     </baseClassMappings>
+                    <basePackageForTests>demo</basePackageForTests>
                 </configuration>
             </plugin>
             <plugin>

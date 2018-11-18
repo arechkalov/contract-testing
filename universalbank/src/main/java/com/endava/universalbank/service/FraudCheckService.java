@@ -28,7 +28,8 @@ public class FraudCheckService {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 
-        return restTemplate.exchange("http://localhost:" + port + "/fraudcheck", HttpMethod.PUT, new HttpEntity<>(request, httpHeaders),
+        return restTemplate.exchange("http://localhost:" + port + "/fraudcheck",
+            HttpMethod.PUT, new HttpEntity<>(request, httpHeaders),
             FraudServiceResponse.class);
     }
 }
